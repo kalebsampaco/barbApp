@@ -14,6 +14,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FuseCardModule } from '@fuse/components/card';
+import { MatRippleModule } from '@angular/material/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { TranslocoModule } from '@ngneat/transloco';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
     declarations: [
@@ -32,7 +39,14 @@ import { FuseCardModule } from '@fuse/components/card';
         MatMenuModule,
         MatProgressBarModule,
         MatTooltipModule,
-        FuseCardModule
+        FuseCardModule,
+        MatRippleModule,
+        MatSidenavModule,
+        MatSortModule,
+        MatTableModule,
+        MatTabsModule,
+        TranslocoModule,
+        NgApexchartsModule
     ]
 })
 export class LandingHomeModule
