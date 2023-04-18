@@ -9,7 +9,7 @@ import moment from 'moment';
 const plans: any = [
     {
         id: 0,
-        title: 'Home',
+        title: 'Agendar',
         content: '',
         url: 'home',
         icon:'dashboard',
@@ -17,7 +17,31 @@ const plans: any = [
     },
     {
         id: 1,
-        title: 'Principal',
+        title: 'Agendamiento',
+        content: '',
+        url: 'principal',
+        icon:'account_balance',
+        rol: ["PYMES_DIR"]
+    },
+    {
+        id: 1,
+        title: 'Historial agendamiento',
+        content: '',
+        url: 'principal',
+        icon:'account_balance',
+        rol: ["PYMES_DIR"]
+    },
+    {
+        id: 1,
+        title: 'Profile',
+        content: '',
+        url: 'principal',
+        icon:'account_balance',
+        rol: ["PYMES_DIR"]
+    },
+    {
+        id: 1,
+        title: 'Compartir',
         content: '',
         url: 'principal',
         icon:'account_balance',
