@@ -1,5 +1,5 @@
-<div class="flex flex-col items-center justify-center w-full h-full">
-    <div class="w-full max-w-screen-lg mb-15" *ngIf="!goToNegocio">
+<div class="flex flex-col items-center justify-center w-full h-full mx-10">
+    <div class="w-full max-w-screen-lg mb-15" *ngIf="!goToNegocio && colaboradorSelected.length === 0">
         <div class="mb-6 sm:mb-12 mt-10">
             <mat-button-toggle-group class="flex flex-wrap -m-2" [(ngModel)]="selectedFilter" (change)="onFilterChange($event)">
                 <ng-container *ngFor="let filter of filters">
@@ -32,9 +32,6 @@
                         {{data.description}}
                     </div>
                     <div class="flex items-center mt-3 -mx-3">
-                        <button class="px-3 mr-1" mat-button [color]="'primary'" [routerLink]="['./']">
-                        Agendar cita
-                        </button>
                         <button class="px-3" mat-button [color]="'primary'" (click)="goToNegocio = true">
                             Revisar Negocio
                         </button>
@@ -45,7 +42,16 @@
     </div>
 
 
-    <div class="w-full max-w-screen-xl mx-auto mb-15 mt-10" *ngIf="goToNegocio">
+    <div class="w-full max-w-screen-xl mx-10 mb-15 mt-10" *ngIf="goToNegocio">
+        <div class="flex items-center mt-3 mb-8">
+            <button class="px-3" mat-button [color]="'primary'" (click)="goToNegocio = false">
+                <mat-icon
+                    class="ml-2 icon-size-5"
+                    [svgIcon]="'heroicons_solid:arrow-narrow-left'"></mat-icon>
+
+                Volver
+            </button>
+        </div>
         <!-- Tabs -->
         <mat-tab-group class="sm:px-2" [animationDuration]="'0'">
 
@@ -56,9 +62,9 @@
                         <!-- Summary -->
                         <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
                             <div class="flex items-start justify-between">
-                                <div class="text-lg font-medium tracking-tight leading-6 truncate">Summary</div>
+                                <div class="text-lg font-medium tracking-tight leading-6 truncate">Corte</div>
                                 <div class="ml-2 -mt-2 -mr-3">
-                                    <button mat-icon-button [matMenuTriggerFor]="summaryMenu">
+                                    <!-- <button mat-icon-button [matMenuTriggerFor]="summaryMenu">
                                                 <mat-icon
                                                     class="icon-size-5"
                                                     [svgIcon]="'heroicons_solid:dots-vertical'"></mat-icon>
@@ -67,24 +73,23 @@
                                         <button mat-menu-item>Yesterday</button>
                                         <button mat-menu-item>2 days ago</button>
                                         <button mat-menu-item>3 days ago</button>
-                                    </mat-menu>
+                                    </mat-menu> -->
                                 </div>
                             </div>
                             <div class="flex flex-col items-center mt-2">
-                                <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-blue-500">21</div>
-                                <div class="text-lg font-medium text-blue-600 dark:text-blue-500">Due Tasks</div>
+                                <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-blue-500">4</div>
+                                <div class="text-lg font-medium text-blue-600 dark:text-blue-500">Colaboradores</div>
                                 <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
-                                    <div class="text-md font-medium truncate">Completed:</div>
-                                    <div class="ml-1.5 text-lg font-semibold">13</div>
+                                    <div class="text-md font-medium truncate">Corte para caballero</div>
                                 </div>
                             </div>
                         </div>
                         <!-- Overdue -->
                         <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
                             <div class="flex items-start justify-between">
-                                <div class="text-lg font-medium tracking-tight leading-6 truncate">Overdue</div>
+                                <div class="text-lg font-medium tracking-tight leading-6 truncate">Manicura</div>
                                 <div class="ml-2 -mt-2 -mr-3">
-                                    <button mat-icon-button [matMenuTriggerFor]="overdueMenu">
+                                    <!-- <button mat-icon-button [matMenuTriggerFor]="overdueMenu">
                                                 <mat-icon
                                                     class="icon-size-5"
                                                     [svgIcon]="'heroicons_solid:dots-vertical'"></mat-icon>
@@ -93,24 +98,23 @@
                                         <button mat-menu-item>Yesterday</button>
                                         <button mat-menu-item>2 days ago</button>
                                         <button mat-menu-item>3 days ago</button>
-                                    </mat-menu>
+                                    </mat-menu> -->
                                 </div>
                             </div>
                             <div class="flex flex-col items-center mt-2">
-                                <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-red-500">17</div>
-                                <div class="text-lg font-medium text-red-600 dark:text-red-500">Tasks</div>
+                                <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-red-500">2</div>
+                                <div class="text-lg font-medium text-red-600 dark:text-red-500">Colaboradores</div>
                                 <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
-                                    <div class="text-md font-medium truncate">From yesterday:</div>
-                                    <div class="ml-1.5 text-lg font-semibold">9</div>
+                                    <div class="text-md font-medium truncate">Manicura para hombre y mujer</div>
                                 </div>
                             </div>
                         </div>
                         <!-- Issues -->
                         <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
                             <div class="flex items-start justify-between">
-                                <div class="text-lg font-medium tracking-tight leading-6 truncate">Issues</div>
+                                <div class="text-lg font-medium tracking-tight leading-6 truncate">Barbería</div>
                                 <div class="ml-2 -mt-2 -mr-3">
-                                    <button mat-icon-button [matMenuTriggerFor]="issuesMenu">
+                                    <!-- <button mat-icon-button [matMenuTriggerFor]="issuesMenu">
                                                 <mat-icon
                                                     class="icon-size-5"
                                                     [svgIcon]="'heroicons_solid:dots-vertical'"></mat-icon>
@@ -119,24 +123,23 @@
                                         <button mat-menu-item>Yesterday</button>
                                         <button mat-menu-item>2 days ago</button>
                                         <button mat-menu-item>3 days ago</button>
-                                    </mat-menu>
+                                    </mat-menu> -->
                                 </div>
                             </div>
                             <div class="flex flex-col items-center mt-2">
-                                <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-amber-500">24</div>
-                                <div class="text-lg font-medium text-amber-600 dark:text-amber-500">Open</div>
+                                <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-amber-500">3</div>
+                                <div class="text-lg font-medium text-amber-600 dark:text-amber-500">Colaboradores</div>
                                 <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
-                                    <div class="text-md font-medium truncate">Closed today:</div>
-                                    <div class="ml-1.5 text-lg font-semibold">19</div>
+                                    <div class="text-md font-medium truncate">Varios diseños de barba</div>
                                 </div>
                             </div>
                         </div>
                         <!-- Features -->
                         <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
                             <div class="flex items-start justify-between">
-                                <div class="text-lg font-medium tracking-tight leading-6 truncate">Features</div>
+                                <div class="text-lg font-medium tracking-tight leading-6 truncate">Depilación</div>
                                 <div class="ml-2 -mt-2 -mr-3">
-                                    <button mat-icon-button [matMenuTriggerFor]="featuresMenu">
+                                    <!-- <button mat-icon-button [matMenuTriggerFor]="featuresMenu">
                                                 <mat-icon
                                                     class="icon-size-5"
                                                     [svgIcon]="'heroicons_solid:dots-vertical'"></mat-icon>
@@ -145,15 +148,14 @@
                                         <button mat-menu-item>Yesterday</button>
                                         <button mat-menu-item>2 days ago</button>
                                         <button mat-menu-item>3 days ago</button>
-                                    </mat-menu>
+                                    </mat-menu> -->
                                 </div>
                             </div>
                             <div class="flex flex-col items-center mt-2">
-                                <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-green-500">38</div>
-                                <div class="text-lg font-medium text-green-600 dark:text-green-500">Proposals</div>
+                                <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-green-500">2</div>
+                                <div class="text-lg font-medium text-green-600 dark:text-green-500">Colaboradores</div>
                                 <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
-                                    <div class="text-md font-medium truncate">Implemented:</div>
-                                    <div class="ml-1.5 text-lg font-semibold">16</div>
+                                    <div class="text-md font-medium truncate">Depilación completa</div>
                                 </div>
                             </div>
                         </div>
@@ -165,8 +167,18 @@
             <!-- Budget -->
             <mat-tab label="Nosotros">
                 <ng-template matTabContent>
-                    <div class="grid grid-cols-1 sm:grid-cols-6 gap-6 w-full min-w-0">
-
+                    <div class="flex flex-col  w-full min-w-0">
+                        <div class="w-full mx-auto prose prose-sm">
+                            <img class="w-20" src="assets/images/logo/logo.svg" alt="Logo image">
+                            <h1>Landing Module</h1>
+                            <p>
+                                This can be the landing or the welcome page of your application. If you have an SSR (Server Side Rendering) setup, or if you don't need to have Search engine visibility and optimizations, you can even use this page as your primary landing page.
+                            </p>
+                            <p>
+                                This is a separate "module", it has its own directory and routing setup and also it's completely separated from the actual application. This is also a simple example of a multiple applications setup that uses the same codebase. You can have different
+                                entry points and essentially have different applications within the same codebase.
+                            </p>
+                        </div>
 
                     </div>
                 </ng-template>
@@ -187,15 +199,15 @@
                                     <div class="text-secondary">{{member.title}}</div>
                                 </div>
                                 <!-- Email & Phone -->
-                                <div class="flex items-center w-full border-t divide-x">
-                                    <a class="flex flex-auto items-center justify-center py-4 hover:bg-hover" [href]="'mailto:' + member.email">
-                                        <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:mail'"></mat-icon>
-                                        <span class="ml-2">Email</span>
+                                <div class="flex items-center w-full border-t divide-x" style="cursor:pointer">
+                                    <a class="flex flex-auto items-center justify-center py-4 hover:bg-hover" (click)="agendarCita(member)">
+                                        <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:calendar'"></mat-icon>
+                                        <span class="ml-2">Agendar cita</span>
                                     </a>
-                                    <a class="flex flex-auto items-center justify-center py-4 hover:bg-hover" [href]="'tel:' + member.phone">
+                                    <!-- <a class="flex flex-auto items-center justify-center py-4 hover:bg-hover" [href]="'tel:' + member.phone">
                                         <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:phone'"></mat-icon>
                                         <span class="ml-2">Call</span>
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
                         </ng-container>
@@ -205,5 +217,36 @@
 
         </mat-tab-group>
     </div>
+
+    <div class="flex justify-center w-full  max-w-screen-xl mx-10 mb-15 mt-10" *ngIf="colaboradorSelected.length > 0 && !goToNegocio">
+        <fuse-card class="flex flex-col items-center justify-center max-w-80 w-full p-8 pb-6 filter-info">
+            <img class="w-32 h-32 rounded-full" src="{{colaboradorSelected[0].avatar}}" alt="Card cover image">
+            <div class="text-2xl font-semibold leading-tight text-center mt-8">{{colaboradorSelected[0].name}}</div>
+            <div class="text-secondary leading-tight text-center mt-1">{{colaboradorSelected[0].email}}</div>
+            <hr class="w-full border-t mt-8 mb-0">
+            <div class="flex flex-col mt-3">
+                <mat-checkbox class="my-1" [color]="'primary'">
+                    Peluquería
+                </mat-checkbox>
+                <mat-checkbox class="my-1" [color]="'primary'" [checked]="true">
+                    Barbería
+                </mat-checkbox>
+                <mat-checkbox class="my-1" [color]="'primary'">
+                    Manicura
+                </mat-checkbox>
+                <mat-checkbox class="my-1" [color]="'primary'" [checked]="true">
+                    Depilación
+                </mat-checkbox>
+
+            </div>
+            <div class="text-2xl font-semibold leading-tight mt-1">$50.000</div>
+            <hr class="w-full border-t mt-0 mb-8">
+            <div class="text-center text-secondary">{{colaboradorSelected[0].title}}</div>
+            <button class="px-6 mt-4" mat-raised-button [color]="'primary'" [routerLink]="['./']">
+                Agendar
+            </button>
+        </fuse-card>
+    </div>
+
 
 </div>

@@ -113,26 +113,26 @@ export class LandingHomeComponent
         {
             id    : '2bfa2be5-7688-48d5-b5ac-dc0d9ac97f14',
             avatar: 'assets/images/avatars/female-10.jpg',
-            name  : 'Nadia Mcknight',
+            name  : 'Nadia Morales',
             email : 'nadiamcknight@mail.com',
             phone : '+1-943-511-2203',
-            title : 'Project Director'
+            title : 'Corte - Depilación'
         },
         {
             id    : '77a4383b-b5a5-4943-bc46-04c3431d1566',
             avatar: 'assets/images/avatars/male-19.jpg',
-            name  : 'Best Blackburn',
+            name  : 'Carl Buitrago',
             email : 'blackburn.best@beadzza.me',
             phone : '+1-814-498-3701',
-            title : 'Senior Developer'
+            title : 'Peluquería - Barbería'
         },
         {
             id    : '8bb0f597-673a-47ca-8c77-2f83219cb9af',
             avatar: 'assets/images/avatars/male-14.jpg',
-            name  : 'Duncan Carver',
+            name  : 'Duncan Castro',
             email : 'duncancarver@mail.info',
             phone : '+1-968-547-2111',
-            title : 'Senior Developer'
+            title : 'Barbería'
         },
         {
             id    : 'c318e31f-1d74-49c5-8dae-2bc5805e2fdb',
@@ -140,49 +140,50 @@ export class LandingHomeComponent
             name  : 'Martin Richards',
             email : 'martinrichards@mail.biz',
             phone : '+1-902-500-2668',
-            title : 'Junior Developer'
+            title : 'Peliquería'
         },
         {
             id    : '0a8bc517-631a-4a93-aacc-000fa2e8294c',
             avatar: 'assets/images/avatars/female-20.jpg',
-            name  : 'Candice Munoz',
+            name  : 'Carla Muñoz',
             email : 'candicemunoz@mail.co.uk',
             phone : '+1-838-562-2769',
-            title : 'Lead Designer'
+            title : 'Depilación'
         },
         {
             id    : 'a4c9945a-757b-40b0-8942-d20e0543cabd',
             avatar: 'assets/images/avatars/female-01.jpg',
-            name  : 'Vickie Mosley',
+            name  : 'Vickie Montenegro',
             email : 'vickiemosley@mail.net',
             phone : '+1-939-555-3054',
-            title : 'Designer'
+            title : 'Peluquería y depilación'
         },
         {
             id    : 'b8258ccf-48b5-46a2-9c95-e0bd7580c645',
             avatar: 'assets/images/avatars/female-02.jpg',
-            name  : 'Tina Harris',
+            name  : 'Tina Hernandez',
             email : 'tinaharris@mail.ca',
             phone : '+1-933-464-2431',
-            title : 'Designer'
+            title : 'Peluquería'
         },
         {
             id    : 'f004ea79-98fc-436c-9ba5-6cfe32fe583d',
             avatar: 'assets/images/avatars/male-02.jpg',
-            name  : 'Holt Manning',
+            name  : 'Harolt Mendez',
             email : 'holtmanning@mail.org',
             phone : '+1-822-531-2600',
-            title : 'Marketing Manager'
+            title : 'Barbería y peluquería'
         },
         {
             id    : '8b69fe2d-d7cc-4a3d-983d-559173e37d37',
             avatar: 'assets/images/avatars/female-03.jpg',
-            name  : 'Misty Ramsey',
+            name  : 'Martha Ramirez',
             email : 'mistyramsey@mail.us',
             phone : '+1-990-457-2106',
-            title : 'Consultant'
+            title : 'Depilación'
         }
     ]
+    colaboradorSelected: Array<any> = [];
     /**
      * Constructor
      */
@@ -282,11 +283,10 @@ export class LandingHomeComponent
         });
     }
 
-    crearReporte(){
-
-    }
-
-    exportToExcel(){
+    agendarCita(member:any){
+        console.log(member)
+        this.colaboradorSelected.push(member);
+        this.goToNegocio = false;
 
     }
 }
