@@ -27,7 +27,7 @@ const plans: any = [
         id: 1,
         title: 'Historial agendamiento',
         content: '',
-        url: 'principal',
+        url: 'historial',
         icon:'history',
         rol: ["PYMES_DIR"]
     },

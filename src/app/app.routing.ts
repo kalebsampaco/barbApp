@@ -57,6 +57,7 @@ export const appRoutes: Route[] = [
         children   : [
             {path: 'home', loadChildren: () => import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule)},
             {path: 'principal', loadChildren: () => import('app/modules/landing/principal/principal.module').then(m => m.LandingHomeModule)},
+            {path: 'historial', loadChildren: () => import('app/modules/landing/historial/historial.module').then(m => m.LandingHistorialModule)},
         ]
     },
 
