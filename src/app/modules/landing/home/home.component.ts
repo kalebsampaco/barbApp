@@ -206,7 +206,7 @@ export class LandingHomeComponent
     }
 
     ngOnInit(): void {
-        this.dataToSave =  JSON.parse(localStorage.getItem('agendamiento'));
+        this.dataToSave =  JSON.parse(localStorage.getItem('agendamiento')) === null ? [] : JSON.parse(localStorage.getItem('agendamiento'));
     }
 
     /**
