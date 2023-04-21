@@ -12,15 +12,15 @@ const plans: any = [
         title: 'Agendar',
         content: '',
         url: 'home',
-        icon:'dashboard',
+        icon:'heroicons_outline:calendar',
         rol: ["PYMES_DIR"]
     },
     {
         id: 1,
-        title: 'Agendamiento',
+        title: 'Sesiones agendadas',
         content: '',
         url: 'principal',
-        icon:'account_balance',
+        icon:'perm_contact_calendar',
         rol: ["PYMES_DIR"]
     },
     {
@@ -28,7 +28,7 @@ const plans: any = [
         title: 'Historial agendamiento',
         content: '',
         url: 'principal',
-        icon:'account_balance',
+        icon:'history',
         rol: ["PYMES_DIR"]
     },
     {
@@ -36,7 +36,7 @@ const plans: any = [
         title: 'Profile',
         content: '',
         url: 'principal',
-        icon:'account_balance',
+        icon:'heroicons_solid:user-circle',
         rol: ["PYMES_DIR"]
     },
     {
@@ -44,7 +44,7 @@ const plans: any = [
         title: 'Compartir',
         content: '',
         url: 'principal',
-        icon:'account_balance',
+        icon:'mat_solid:share',
         rol: ["PYMES_DIR"]
     },
     /* {

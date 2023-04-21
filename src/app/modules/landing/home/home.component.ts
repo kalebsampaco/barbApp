@@ -1,10 +1,11 @@
 import { Component, ViewEncapsulation, ChangeDetectorRef, ViewChild, ElementRef, QueryList, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import { FuseCardComponent } from '@fuse/components/card';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
+import * as moment from 'moment';
 @Component({
     selector     : 'landing-home',
     templateUrl  : './home.component.html',
@@ -182,11 +183,16 @@ export class LandingHomeComponent
             phone : '+1-990-457-2106',
             title : 'Manicura'
         }
-    ]
+    ];
+    filtroHoras = [ '8:00', '9:00', '10:00', '11:00'];
+    fechasesion:string = '';
+    horaI:string = '';
     colaboradorSelected: Array<any> = [];
     teamFiltered: Array<any> = [];
     serviciosColaborador: Array<any>;
     valorServicio: number = 0;
+    serviciosSeleccionados: Array<any> = [];
+    dataToSave: Array<any> = [];
     /**
      * Constructor
      */
@@ -197,6 +203,10 @@ export class LandingHomeComponent
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this._mobileQueryListener);
+    }
+
+    ngOnInit(): void {
+        this.dataToSave =  JSON.parse(localStorage.getItem('agendamiento'));
     }
 
     /**
@@ -305,21 +315,47 @@ export class LandingHomeComponent
 
     CalcularServicio(service:string, event:any){
         if(service.toLowerCase() === 'peluquería' && event.checked){
-            this.valorServicio = this.valorServicio + 20000
+            this.valorServicio = this.valorServicio + 20000;
+            this.serviciosSeleccionados.push(service);
         } else if(service.toLowerCase() === 'peluquería' && !event.checked){
-            this.valorServicio = this.valorServicio - 20000
+            this.valorServicio = this.valorServicio - 20000;
+            this.serviciosSeleccionados = this.serviciosSeleccionados.filter( item => item.toLowerCase() !== service.toLowerCase());
         } else if(service.toLowerCase() === 'manicura' && event.checked){
-            this.valorServicio = this.valorServicio + 30000
+            this.valorServicio = this.valorServicio + 30000;
+            this.serviciosSeleccionados.push(service)
         } else if(service.toLowerCase() === 'manicura' && !event.checked){
-            this.valorServicio = this.valorServicio - 30000
+            this.valorServicio = this.valorServicio - 30000;
+            this.serviciosSeleccionados = this.serviciosSeleccionados.filter( item => item.toLowerCase() !== service.toLowerCase());
         } else if(service.toLowerCase() === 'barbería' && event.checked){
-            this.valorServicio = this.valorServicio + 40000
+            this.valorServicio = this.valorServicio + 40000;
+            this.serviciosSeleccionados.push(service);
         } else if(service.toLowerCase() === 'barbería' && !event.checked){
-            this.valorServicio = this.valorServicio - 40000
+            this.valorServicio = this.valorServicio - 40000;
+            this.serviciosSeleccionados = this.serviciosSeleccionados.filter( item => item.toLowerCase() !== service.toLowerCase());
         } else if(service.toLowerCase() === 'depilación' && event.checked){
-            this.valorServicio = this.valorServicio + 60000
+            this.valorServicio = this.valorServicio + 60000;
+            this.serviciosSeleccionados.push(service);
         } else if(service.toLowerCase() === 'depilación' && !event.checked){
-            this.valorServicio = this.valorServicio - 60000
+            this.valorServicio = this.valorServicio - 60000;
+            this.serviciosSeleccionados = this.serviciosSeleccionados.filter( item => item.toLowerCase() !== service.toLowerCase());
         }
+    }
+
+    SaveAgendamiento(){
+        const data = {
+            id: Math.random()+this.colaboradorSelected[0].name,
+            name: this.colaboradorSelected[0].name,
+            email: this.colaboradorSelected[0].email,
+            avatar: this.colaboradorSelected[0].avatar,
+            servicios: this.serviciosSeleccionados,
+            valor: this.valorServicio,
+            fecha: this.fechasesion,
+            hora: this.horaI,
+            cantidadHoras: this.serviciosSeleccionados.length
+        }
+
+        this.dataToSave.push(data)
+        localStorage.setItem('agendamiento', JSON.stringify(this.dataToSave));
+        location.reload();
     }
 }

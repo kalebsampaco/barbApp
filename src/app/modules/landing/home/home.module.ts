@@ -21,6 +21,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TranslocoModule } from '@ngneat/transloco';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
     declarations: [
@@ -46,7 +48,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
         MatTableModule,
         MatTabsModule,
         TranslocoModule,
-        NgApexchartsModule
+        NgApexchartsModule,
+        MatDatepickerModule,
+        MatMomentDateModule
     ]
 })
 export class LandingHomeModule
