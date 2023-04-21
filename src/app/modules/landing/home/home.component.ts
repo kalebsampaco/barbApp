@@ -354,7 +354,7 @@ export class LandingHomeComponent
             cantidadHoras: this.serviciosSeleccionados.length
         }
 
-        this.dataToSave.push(data)
+        this.dataToSave?.push(data)
         localStorage.setItem('agendamiento', JSON.stringify(this.dataToSave));
         location.reload();
     }
