@@ -116,7 +116,7 @@ export class LandingHomeComponent
             name  : 'Nadia Morales',
             email : 'nadiamcknight@mail.com',
             phone : '+1-943-511-2203',
-            title : 'Corte - Depilación'
+            title : 'Depilación'
         },
         {
             id    : '77a4383b-b5a5-4943-bc46-04c3431d1566',
@@ -140,7 +140,7 @@ export class LandingHomeComponent
             name  : 'Martin Richards',
             email : 'martinrichards@mail.biz',
             phone : '+1-902-500-2668',
-            title : 'Peliquería'
+            title : 'Peluquería'
         },
         {
             id    : '0a8bc517-631a-4a93-aacc-000fa2e8294c',
@@ -164,7 +164,7 @@ export class LandingHomeComponent
             name  : 'Tina Hernandez',
             email : 'tinaharris@mail.ca',
             phone : '+1-933-464-2431',
-            title : 'Peluquería'
+            title : 'Peluquería - manicura'
         },
         {
             id    : 'f004ea79-98fc-436c-9ba5-6cfe32fe583d',
@@ -180,10 +180,13 @@ export class LandingHomeComponent
             name  : 'Martha Ramirez',
             email : 'mistyramsey@mail.us',
             phone : '+1-990-457-2106',
-            title : 'Depilación'
+            title : 'Manicura'
         }
     ]
     colaboradorSelected: Array<any> = [];
+    teamFiltered: Array<any> = [];
+    serviciosColaborador: Array<any>;
+    valorServicio: number = 0;
     /**
      * Constructor
      */
@@ -284,9 +287,39 @@ export class LandingHomeComponent
     }
 
     agendarCita(member:any){
-        console.log(member)
+        this.serviciosColaborador = member.title.split(' ').length === 0 ? member.title.split('') : member.title.split(' ').filter((item:any) => item.length > 3);
         this.colaboradorSelected.push(member);
         this.goToNegocio = false;
 
+    }
+
+    filtroServicio(servicios:string){
+        this.teamFiltered = []
+        this.teamMembers.forEach( col => {
+            if (col.title.toLowerCase().split(' ').includes(servicios.toLowerCase())) {
+                this.teamFiltered.push(col)
+            }
+        })
+        //this.teamFiltered = this.teamMembers.filter((item:any) => item.title.toLowerCase().split(' ').includes(servicios.toLowerCase()))
+    }
+
+    CalcularServicio(service:string, event:any){
+        if(service.toLowerCase() === 'peluquería' && event.checked){
+            this.valorServicio = this.valorServicio + 20000
+        } else if(service.toLowerCase() === 'peluquería' && !event.checked){
+            this.valorServicio = this.valorServicio - 20000
+        } else if(service.toLowerCase() === 'manicura' && event.checked){
+            this.valorServicio = this.valorServicio + 30000
+        } else if(service.toLowerCase() === 'manicura' && !event.checked){
+            this.valorServicio = this.valorServicio - 30000
+        } else if(service.toLowerCase() === 'barbería' && event.checked){
+            this.valorServicio = this.valorServicio + 40000
+        } else if(service.toLowerCase() === 'barbería' && !event.checked){
+            this.valorServicio = this.valorServicio - 40000
+        } else if(service.toLowerCase() === 'depilación' && event.checked){
+            this.valorServicio = this.valorServicio + 60000
+        } else if(service.toLowerCase() === 'depilación' && !event.checked){
+            this.valorServicio = this.valorServicio - 60000
+        }
     }
 }
